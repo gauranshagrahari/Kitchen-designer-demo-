@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Elysian Kitchens | Premium Modular Kitchen Designs</title>
+  <!-- Google Fonts + Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #fefefe;
+      color: #1e1e2a;
+      line-height: 1.4;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    .section {
+      padding: 80px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .section-sm {
+      padding: 60px 0;
+    }
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 48px;
+      letter-spacing: -0.3px;
+      color: #1e1e2a;
+    }
+    .section-title span {
+      color: #c67b3e;
+      border-bottom: 3px solid #c67b3e;
+      padding-bottom: 6px;
+    }
+
+    .btn-primary {
+      background: #c67b3e;
+      color: white;
+      border: none;
+      padding: 14px 32px;
+      font-weight: 600;
+      border-radius: 48px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1rem;
+      box-shadow: 0 4px 8px rgba(198,123,62,0.2);
+    }
+    .btn-primary:hover {
+      background: #a85f2c;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 20px rgba(0,0,0,0.08);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid #c67b3e;
+      color: #c67b3e;
+      padding: 12px 28px;
+      border-radius: 48px;
+      font-weight: 600;
+      transition: 0.2s;
+      cursor: pointer;
+    }
+    .btn-outline:hover {
+      background: #c67b3e;
+      color: white;
+    }
+
+    nav {
+      background: white;
+      padding: 18px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #c67b3e, #e09d5e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      font-weight: 500;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #2d2d35;
+      transition: 0.2s;
+    }
+    .nav-links a:hover { color: #c67b3e; }
+
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      color: white;
+      position: relative;
+    }
+    .hero-content {
+      max-width: 700px;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      margin: 32px 0 28px;
+    }
+    .stat-badge {
+      background: rgba(255,255,255,0.18);
+      backdrop-filter: blur(8px);
+      padding: 10px 20px;
+      border-radius: 48px;
+      font-weight: 600;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 28px;
+    }
+    .gallery-card, .category-card, .before-card {
+      background: #fff;
+      border-radius: 24px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    }
+    .gallery-card img, .category-card img, .before-card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .gallery-card:hover img { transform: scale(1.02); }
+    .category-card { text-align: center; padding-bottom: 20px; }
+    .category-card h3 { margin: 18px 0 6px; }
+
+    .category-cards, .before-after-row, .steps, .testimonials-grid, .pricing-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+    .category-card, .before-card, .step, .testi-card, .price-card {
+      flex: 1 1 260px;
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+    }
+    .before-card { flex: 1; }
+    .before-card h4 { padding: 20px 0 8px 24px; font-weight: 700; }
+
+    .materials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+      gap: 30px;
+      text-align: center;
+    }
+    .material-card i { font-size: 2.5rem; color: #c67b3e; margin-bottom: 16px; }
+
+    .step {
+      padding: 28px 24px;
+      text-align: center;
+      border: 1px solid #f0ede8;
+    }
+    .step-number {
+      width: 48px;
+      height: 48px;
+      background: #c67b3e20;
+      color: #c67b3e;
+      border-radius: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.5rem;
+      margin: 0 auto 20px;
+    }
+
+    .testi-card {
+      padding: 28px;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.04);
+    }
+    .testi-card i.fa-quote-left { color: #c67b3e; opacity: 0.5; margin-bottom: 12px; display: block; }
+
+    .price-card {
+      padding: 28px;
+      text-align: center;
+      border: 1px solid #eae6df;
+    }
+    .price-card .price { font-size: 2rem; font-weight: 800; color: #c67b3e; margin: 16px 0; }
+
+    .offer-banner {
+      background: linear-gradient(115deg, #1e2a2e 0%, #2c3e2f 100%);
+      color: white;
+      border-radius: 40px;
+      padding: 48px 32px;
+      text-align: center;
+    }
+
+    .faq-grid {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .faq-item {
+      background: white;
+      margin-bottom: 16px;
+      border-radius: 20px;
+      padding: 20px 24px;
+      cursor: pointer;
+      border: 1px solid #ece8e2;
+    }
+    .faq-question { font-weight: 700; display: flex; justify-content: space-between; }
+    .faq-answer { max-height: 0; overflow: hidden; transition: 0.3s; color: #4a4a5a; }
+    .faq-item.active .faq-answer { max-height: 180px; margin-top: 12px; }
+
+    .contact-map-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+    .contact-form, .map {
+      flex: 1;
+      background: #ffffff;
+      border-radius: 32px;
+      padding: 28px;
+      border: 1px solid #f0ede8;
+    }
+    .form-group { margin-bottom: 20px; }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 14px 18px;
+      border: 1px solid #ddd8cf;
+      border-radius: 28px;
+      font-family: inherit;
+    }
+    .map iframe { width: 100%; height: 280px; border-radius: 24px; border: 0; }
+
+    .cta-banner {
+      background: #c67b3e;
+      border-radius: 44px;
+      padding: 48px 32px;
+      text-align: center;
+      color: white;
+    }
+    .footer {
+      background: #121217;
+      color: #b3b3c2;
+      padding: 48px 0 24px;
+      text-align: center;
+    }
+    .whatsapp-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: #25D366;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2rem;
+      box-shadow: 0 8px 20px rgba(37,211,102,0.4);
+      transition: 0.2s;
+      z-index: 99;
+    }
+    .whatsapp-float:hover { transform: scale(1.07); }
+    
+    /* fallback image container style */
+    img {
+      background: #f5f2ed;
+    }
+    
+    @media (max-width: 780px) {
+      .nav-links { display: none; }
+      .hero h1 { font-size: 2.4rem; }
+      .section-title { font-size: 1.9rem; }
+      .container { padding: 0 20px; }
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<!-- WhatsApp Lead Button - Updated Contact Number -->
+<a href="https://wa.me/917897464377?text=Hello%21%20I%27m%20interested%20in%20a%20premium%20modular%20kitchen%20design%20consultation" class="whatsapp-float" target="_blank" rel="noopener">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<nav>
+  <div class="container nav-container">
+    <div class="logo">Elysian<span style="color:#c67b3e;">Kitchens</span></div>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#process">Process</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div><i class="fas fa-bars" style="font-size:1.6rem; cursor:pointer;" id="menuToggle"></i></div>
+  </div>
+</nav>
+
+<!-- HERO Section -->
+<section class="hero" id="home">
+  <div class="container hero-content">
+    <h1>Upgrade Your Kitchen, <br>Upgrade Your Life</h1>
+    <div class="hero-stats">
+      <div class="stat-badge"><i class="fas fa-check-circle"></i> 100+ Kitchens Delivered</div>
+      <div class="stat-badge"><i class="fas fa-rupee-sign"></i> Affordable EMI Options</div>
+      <div class="stat-badge"><i class="fas fa-pencil-ruler"></i> Custom Designs</div>
+    </div>
+    <button class="btn-primary" id="heroCtaBtn"><i class="fas fa-calendar-alt"></i> Free Design Consultation</button>
+  </div>
+</section>
+
+<!-- Gallery Section with Real Images + Backup System -->
+<section id="gallery" class="section">
+  <div class="container">
+    <div class="section-title">Our <span>Signature Kitchens</span></div>
+    <div class="gallery-grid" id="galleryGrid"></div>
+  </div>
+</section>
+
+<!-- Categories -->
+<section class="section-sm">
+  <div class="container">
+    <div class="section-title">Choose Your <span>Layout</span></div>
+    <div class="category-cards" id="categoryContainer"></div>
+  </div>
+</section>
+
+<!-- Before/After -->
+<section class="section-sm">
+  <div class="container">
+    <div class="section-title">Before & <span>After</span> Transformations</div>
+    <div class="before-after-row" id="beforeAfterContainer"></div>
+  </div>
+</section>
+
+<!-- Materials & finishes -->
+<section class="section">
+  <div class="container">
+    <div class="section-title">Materials & <span>Premium Finishes</span></div>
+    <div class="materials-grid">
+      <div class="material-card"><i class="fas fa-cube"></i><h4>Acrylic</h4><p>Glossy & durable</p></div>
+      <div class="material-card"><i class="fas fa-tree"></i><h4>Solid Wood</h4><p>Timeless elegance</p></div>
+      <div class="material-card"><i class="fas fa-border-all"></i><h4>Laminate</h4><p>Scratch resistant</p></div>
+      <div class="material-card"><i class="fas fa-water"></i><h4>Glass Finish</h4><p>High-gloss luxury</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Process Steps -->
+<section id="process" class="section-sm">
+  <div class="container">
+    <div class="section-title">Simple <span>4-Step</span> Journey</div>
+    <div class="steps">
+      <div class="step"><div class="step-number">1</div><h3>Design Consult</h3><p>Free site visit & 3D renders</p></div>
+      <div class="step"><div class="step-number">2</div><h3>Customization</h3><p>Choose materials & layout</p></div>
+      <div class="step"><div class="step-number">3</div><h3>Precision Install</h3><p>Expert installation in 7 days</p></div>
+      <div class="step"><div class="step-number">4</div><h3>Handover & Care</h3><p>Warranty & aftercare</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="section">
+  <div class="container">
+    <div class="section-title">Client <span>Love</span></div>
+    <div class="testimonials-grid">
+      <div class="testi-card"><i class="fas fa-quote-left fa-2x"></i><p>"Absolutely stunning! The team understood our vision. EMI option made it seamless."</p><h4 style="margin-top:16px;">— Anjali Mehta</h4><i class="fas fa-star" style="color:#c67b3e;"></i> 5.0</div>
+      <div class="testi-card"><i class="fas fa-quote-left fa-2x"></i><p>"Best decision we made. The U-shaped kitchen is both ergonomic and gorgeous. 100% recommended."</p><h4 style="margin-top:16px;">— Rohit Sharma</h4><i class="fas fa-star" style="color:#c67b3e;"></i> 5.0</div>
+      <div class="testi-card"><i class="fas fa-quote-left fa-2x"></i><p>"Island kitchen with premium quartz – beyond expectations. Free consultation was so valuable."</p><h4 style="margin-top:16px;">— Priya K.</h4><i class="fas fa-star" style="color:#c67b3e;"></i> 5.0</div>
+    </div>
+  </div>
+</section>
+
+<!-- Video Section -->
+<section class="section-sm">
+  <div class="container">
+    <div class="section-title">Watch <span>Dream Kitchens</span> in Action</div>
+    <div style="position:relative; padding-bottom: 56.25%; height:0; border-radius: 32px; overflow:hidden;">
+      <iframe style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/2Qq5a2SfYHs?rel=0" title="Modular Kitchen Video" frameborder="0" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section id="pricing" class="section">
+  <div class="container">
+    <div class="section-title">Investment <span>Plans</span></div>
+    <div class="pricing-cards">
+      <div class="price-card"><h3>Essential</h3><div class="price">₹1.25L – ₹1.9L</div><p>Laminate finish, L/U shape, basic hardware</p><button class="btn-outline quoteBtn">Get Quote</button></div>
+      <div class="price-card"><h3>Signature</h3><div class="price">₹2.2L – ₹3.6L</div><p>Acrylic/wood, soft-close, premium accessories</p><button class="btn-outline quoteBtn">Get Quote</button></div>
+      <div class="price-card"><h3>Luxury Studio</h3><div class="price">₹4.5L – ₹8L+</div><p>German hardware, marble/quartz, smart storage</p><button class="btn-outline quoteBtn">Get Quote</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- EMI Info -->
+<section class="section-sm">
+  <div class="container">
+    <div class="section-title">Flexible <span>EMI</span> Options</div>
+    <div style="background:#f7f4ef; border-radius: 40px; padding: 32px; text-align:center;">
+      <i class="fas fa-credit-card" style="font-size:2.5rem; color:#c67b3e;"></i>
+      <h3 style="margin:16px 0">No-Cost EMI up to 24 Months</h3>
+      <p>Partner Banks: HDFC, ICICI, SBI, Bajaj Finance | 0% interest, quick approval</p>
+      <p style="margin-top:10px;"><strong>EMI starting at ₹4,999/month*</strong> on select kitchen packages</p>
+    </div>
+  </div>
+</section>
+
+<!-- Offers Banner -->
+<section class="section-sm">
+  <div class="container">
+    <div class="offer-banner">
+      <i class="fas fa-gift" style="font-size:2rem;"></i>
+      <h2 style="margin:12px 0">🎉 Festive Spectacular 🎉</h2>
+      <p style="font-size:1.2rem;">Get 15% OFF + Free chimney + 3-year extended warranty. Limited slots!</p>
+      <button class="btn-primary" style="background:#ffffff; color:#c67b3e; margin-top:24px;" id="offerCta">Claim Offer</button>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="container">
+    <div class="section-title">Frequently <span>Asked</span></div>
+    <div class="faq-grid" id="faqContainer">
+      <div class="faq-item"><div class="faq-question">What is the average timeline for installation? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Typically 2-3 weeks after design approval, including modular production and installation.</div></div>
+      <div class="faq-item"><div class="faq-question">Do you offer free design consultation? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Absolutely! We provide a free site visit, 3D design mockup and quote.</div></div>
+      <div class="faq-item"><div class="faq-question">What warranty do you provide? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">5 years on hardware, 10 years on structure, and lifetime post-service support.</div></div>
+      <div class="faq-item"><div class="faq-question">Can I customise materials and colours? <i class="fas fa-chevron-down"></i></div><div class="faq-answer">Yes, 100+ finish options and modular accessories to match your style.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Form + Map -->
+<section id="contact" class="section-sm">
+  <div class="container">
+    <div class="section-title">Let's <span>Design</span> Together</div>
+    <div class="contact-map-wrapper">
+      <div class="contact-form">
+        <h3 style="margin-bottom:24px;">Request a free consultation</h3>
+        <form id="leadForm">
+          <div class="form-group"><input type="text" placeholder="Full Name" required id="nameInput"></div>
+          <div class="form-group"><input type="email" placeholder="Email Address" required id="emailInput"></div>
+          <div class="form-group"><input type="tel" placeholder="Phone Number" required id="phoneInput"></div>
+          <div class="form-group"><textarea rows="3" placeholder="Tell us about your dream kitchen..."></textarea></div>
+          <button type="submit" class="btn-primary" style="width:100%">Send Inquiry →</button>
+        </form>
+      </div>
+      <div class="map">
+        <h3>Visit Our Experience Studio</h3>
+        <iframe loading="lazy" src="https://maps.google.com/maps?q=Modular%20Kitchen%20Studio%20Mumbai&t=&z=14&ie=UTF8&iwloc=&output=embed" allowfullscreen></iframe>
+        <p style="margin-top:12px;"><i class="fas fa-map-marker-alt"></i> Andheri East, Mumbai - 400093</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Banner -->
+<section class="section-sm">
+  <div class="container">
+    <div class="cta-banner">
+      <h2>Ready for a kitchen that inspires?</h2>
+      <p style="margin:16px 0; font-size:1.1rem;">Book your free design consultation today — limited slots this month.</p>
+      <button class="btn-primary" style="background:#ffffff; color:#c67b3e;" id="bottomCtaBtn">Claim Free Consultation</button>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="logo" style="color:#fff; margin-bottom:20px;">Elysian<span style="color:#c67b3e;">Kitchens</span></div>
+    <p>© 2025 Premium Modular Kitchens — Crafted for modern Indian homes</p>
+    <p style="margin-top:12px;"><i class="fas fa-phone-alt"></i> +91 78974 64377 &nbsp;|&nbsp; <i class="fas fa-envelope"></i> hello@elysiankitchens.in</p>
+  </div>
+</footer>
+
+<script>
+  // ========== REAL IMAGES WITH THREE-TIER BACKUP SYSTEM ==========
+  // All images are real kitchen photos from Pexels (high-quality, real images, no text-based images)
+  
+  const IMAGE_SETS = {
+    // Gallery images - all real kitchen photos
+    gallery: [
+      { primary: 'https://images.pexels.com/photos/2062426/pexels-photo-2062426.jpeg?auto=compress&cs=tinysrgb&w=600', backup1: 'https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=600', backup2: 'https://images.pexels.com/photos/2087369/pexels-photo-2087369.jpeg?auto=compress&cs=tinysrgb&w=600', alt: 'Modern modular kitchen with sleek cabinets' },
+      { primary: 'https://images.pexels.com/photos/1571468/pexels-photo-1571468.jpeg?auto=compress&cs=tinysrgb&w=600', backup1: 'https://images.pexels.com/photos/2765285/pexels-photo-2765285.jpeg?auto=compress&cs=tinysrgb&w=600', backup2: 'https://images.pexels.com/photos/1454806/pexels-photo-1454806.jpeg?auto=compress&cs=tinysrgb&w=600', alt: 'Luxury kitchen with marble countertop' },
+      { primary: 'https://images.pexels.com/photos/2087366/pexels-photo-2087366.jpeg?auto=compress&cs=tinysrgb&w=600', backup1: 'https://images.pexels.com/photos/1454807/pexels-photo-1454807.jpeg?auto=compress&cs=tinysrgb&w=600', backup2: 'https://images.pexels.com/photos/1643385/pexels-photo-1643385.jpeg?auto=compress&cs=tinysrgb&w=600', alt: 'Contemporary modular kitchen design' },
+      { primary: 'https://images.pexels.com/photos/2635038/pexels-photo-2635038.jpeg?auto=compress&cs=tinysrgb&w=600', backup1: 'https://images.pexels.com/photos/1813500/pexels-photo-1813500.jpeg?auto=compress&cs=tinysrgb&w=600', backup2: 'https://images.pexels.com/photos/1571462/pexels-photo-1571462.jpeg?auto=compress&cs=tinysrgb&w=600', alt: 'Premium island kitchen with pendant lights' }
+    ],
+    // Category images
+    categories: [
+      { name: 'L-Shape', desc: 'Maximizes corner space', primary: 'https://images.pexels.com/photos/1571463/pexels-photo-1571463.jpeg?auto=compress&cs=tinysrgb&w=600', backup1: 'https://images.pexels.com/photos/2062427/pexels-photo-2062427.jpeg?auto=compress&cs=tinysrgb&w=600', backup2: 'https://images.pexels.com/photos/1643389/pexels-photo-1643389.jpeg?auto=compress&cs=tinysrgb&w=600', alt: 'L-shaped modular kitchen' },
+      { name: 'U-Shape', desc: 'Ample storage & workflow', primary: 'https://images.pexels.com/photos/2087368/pexels-photo-2087368.jpeg?auto=compress&cs=tinysrgb&w=600', backup1: 'https://images.pexels.com/photos/2808087/pexels-photo-2808087.jpeg?auto=compress&cs=tinysrgb&w=600', backup2: 'https://images.pexels.com/photos/1571466/pexels-photo-1571466.jpeg?auto=compress&cs=tinysrgb&w=600', alt: 'U-shaped modular kitchen with ample storage' },
+      { name: 'Island', desc: 'Social & functional hub', primary: 'https://images.pexels.com/photos/1643385/pexels-photo-1643385.jpeg?auto=compress&cs=tinysrgb&w=600', backup1: 'https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&w=600', backup2: 'https://images.pexels.com/photos/2087365/pexels-photo-2087365.jpeg?auto=compress&cs=tinysrgb&w=600', alt: 'Kitchen island with breakfast bar' }
+    ],
+    // Before/After
+    before: { primary: 'https://images.pexels.com/photos/2808087/pexels-photo-2808087.jpeg?auto=compress&cs=tinysrgb&w=600', backup1: 'https://images.pexels.com/photos/1643389/pexels-photo-1643389.jpeg?auto=compress&cs=tinysrgb&w=600', backup2: 'https://images.pexels.com/photos/1454808/pexels-photo-1454808.jpeg?auto=compress&cs=tinysrgb&w=600', alt: 'Old kitchen before renovation' },
+    after: { primary: 'https://images.pexels.com/photos/1571462/pexels-photo-1571462.jpeg?auto=compress&cs=tinysrgb&w=600', backup1: 'https://images.pexels.com/photos/1571466/pexels-photo-1571466.jpeg?auto=compress&cs=tinysrgb&w=600', backup2: 'https://images.pexels.com/photos/2062426/pexels-photo-2062426.jpeg?auto=compress&cs=tinysrgb&w=600', alt: 'Modern modular kitchen after transformation' }
+  };
+
+  // Function to create image with multi-level fallback (real images only)
+  function createRobustImage(primaryUrl, backupUrl1, backupUrl2, altText) {
+    const img = new Image();
+    img.alt = altText;
+    img.loading = 'lazy';
+    img.style.width = '100%';
+    img.style.height = '100%';
+    img.style.objectFit = 'cover';
+    let fallbackAttempt = 0;
+    const fallbackUrls = [backupUrl1, backupUrl2];
+    
+    img.onerror = function() {
+      if (fallbackAttempt < fallbackUrls.length && fallbackUrls[fallbackAttempt]) {
+        this.src = fallbackUrls[fallbackAttempt];
+        fallbackAttempt++;
+      } else {
+        // Ultimate fallback - another real kitchen image from reliable CDN
+        this.onerror = null;
+        this.src = 'https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=600';
+      }
+    };
+    img.src = primaryUrl;
+    return img;
+  }
+
+  // Populate gallery
+  const galleryGrid = document.getElementById('galleryGrid');
+  IMAGE_SETS.gallery.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'gallery-card';
+    const img = createRobustImage(item.primary, item.backup1, item.backup2, item.alt);
+    card.appendChild(img);
+    galleryGrid.appendChild(card);
+  });
+
+  // Populate categories
+  const categoryContainer = document.getElementById('categoryContainer');
+  IMAGE_SETS.categories.forEach(cat => {
+    const card = document.createElement('div');
+    card.className = 'category-card';
+    const img = createRobustImage(cat.primary, cat.backup1, cat.backup2, cat.alt);
+    const h3 = document.createElement('h3');
+    h3.innerText = cat.name;
+    const p = document.createElement('p');
+    p.innerText = cat.desc;
+    card.appendChild(img);
+    card.appendChild(h3);
+    card.appendChild(p);
+    categoryContainer.appendChild(card);
+  });
+
+  // Populate Before/After
+  const beforeAfterRow = document.getElementById('beforeAfterContainer');
+  const beforeCard = document.createElement('div');
+  beforeCard.className = 'before-card';
+  beforeCard.innerHTML = '<h4><i class="fas fa-times-circle"></i> Before</h4>';
+  const beforeImg = createRobustImage(IMAGE_SETS.before.primary, IMAGE_SETS.before.backup1, IMAGE_SETS.before.backup2, IMAGE_SETS.before.alt);
+  beforeCard.appendChild(beforeImg);
+  
+  const afterCard = document.createElement('div');
+  afterCard.className = 'before-card';
+  afterCard.innerHTML = '<h4><i class="fas fa-check-circle"></i> After (Elysian)</h4>';
+  const afterImg = createRobustImage(IMAGE_SETS.after.primary, IMAGE_SETS.after.backup1, IMAGE_SETS.after.backup2, IMAGE_SETS.after.alt);
+  afterCard.appendChild(afterImg);
+  
+  beforeAfterRow.appendChild(beforeCard);
+  beforeAfterRow.appendChild(afterCard);
+
+  // Intersection Observer for fade animations
+  const fadeElements = document.querySelectorAll('.gallery-card, .category-card, .material-card, .step, .testi-card, .price-card, .faq-item, .contact-form, .map, .offer-banner, .before-card, .hero-stats');
+  fadeElements.forEach(el => el.classList.add('fade-up'));
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  fadeElements.forEach(el => observer.observe(el));
+  document.querySelectorAll('.hero-content h1, .hero-stats, .hero .btn-primary').forEach(el => {
+    el.classList.add('fade-up');
+    observer.observe(el);
+  });
+
+  // Mobile menu
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinksDiv = document.querySelector('.nav-links');
+  if(menuToggle){
+    menuToggle.addEventListener('click', () => {
+      navLinksDiv.style.display = navLinksDiv.style.display === 'flex' ? 'none' : 'flex';
+    });
+  }
+  window.addEventListener('resize', () => {
+    if(window.innerWidth > 780) navLinksDiv.style.display = 'flex';
+    else if(navLinksDiv.style.display !== 'none') navLinksDiv.style.display = 'none';
+  });
+
+  // FAQ toggle
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.addEventListener('click', () => item.classList.toggle('active'));
+  });
+
+  // CTA scrolls
+  const scrollToContact = () => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+  document.getElementById('heroCtaBtn')?.addEventListener('click', scrollToContact);
+  document.getElementById('bottomCtaBtn')?.addEventListener('click', scrollToContact);
+  document.getElementById('offerCta')?.addEventListener('click', () => {
+    alert('🎁 Limited festive offer locked! Our design expert will call you shortly.');
+    scrollToContact();
+  });
+
+  // Lead form
+  const leadForm = document.getElementById('leadForm');
+  leadForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('nameInput')?.value;
+    const email = document.getElementById('emailInput')?.value;
+    const phone = document.getElementById('phoneInput')?.value;
+    if(name && email && phone){
+      alert(`Thank you ${name}! We have received your consultation request. Our team will reach out within 24 hours.`);
+      leadForm.reset();
+    } else alert('Please fill all fields to book your free design consultation.');
+  });
+
+  // Pricing quotes
+  document.querySelectorAll('.quoteBtn').forEach(btn => {
+    btn.addEventListener('click', () => alert('Our pricing expert will share detailed quote with customisation options. Connect on WhatsApp or submit form.'));
+  });
+</script>
+</body>
+</html>
